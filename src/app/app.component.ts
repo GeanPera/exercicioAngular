@@ -6,5 +6,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'angularProject';
+  title: string = "angularProject";
+
+  textoSalvo: string = "";
+  cliqueBtEnviar(campoInput: string) {
+    this.textoSalvo = campoInput
+
+  }
 }
+
