@@ -1,46 +1,71 @@
 
 <div class="card width shadow-lg mx-auto">
     <div class="card-body">
+
         <div class="row p-2 px-4 pt-4">
+
             <h2 class=" p-0">Login</h2>
+
         </div>
+
         <div class="row p-2 px-4">
-            <label for="idEmail" class="form-label p-0">E-mail Address</label>
+
+            <label for="idEmail" class="form-label p-0 text-muted">E-mail Address</label>
             <input type="text" 
                 class="form-control" 
                 id="idEmail"  
-                (input) = "email = inputEmail.value"
+                (input) = "usuario.userId = inputEmail.value"
                 #inputEmail>
+
         </div>
+
         <div class="row p-2 px-4">  
-            <label for="idPassword" class="col form-label p-0">Password</label>  
+
+            <label for="idPassword" class="col form-label p-0 text-muted">Password</label>  
             <a href="" class="text-end col p-0">Forgot password?</a>
             <input type="text" 
                 class="form-control" 
                 id="idPassword" 
-                (input) = "password = inputPassword.value"
+                (input) = "usuario.password = inputPassword.value"
                 #inputPassword>
+
         </div>
-        <div class="row p-2 px-4">
-            <div class="col p-0 align-middle">
+
+        <div class="row p-2 px-4 align-items-center">
+
+            <div class="col p-0 ">
+
                 <input class="form-check-input" type="checkbox" id="idCheckbox">
                 <label class="form-check-label" for="idCheckbox">Remember me</label> 
-                
+
             </div>
+
             <div class="col text-end p-0">
+
                 <button type="button" class="btn btn-primary" (click)="login()">Login</button>
+
             </div>
+
         </div>
-        
-        <div class="row p-2 px-4">
-            <p [ngStyle]="{'color': color}">{{msn}}</p>
+
+        <div class="row p-2 px-4 text-center justify-content-center">
+
+            <div class="spinner-border " *ngIf="spinner; else menssagem" #spinner></div>
+            <ng-template #menssagem>
+                <p *ngIf="msn!=''" [ngClass]="classe.color"> {{msn}} </p>
+            </ng-template>
+
         </div>
     </div>
+
     <div class="card-footer">
+
         <div class="row p-2 px-4 text-center">
+
             <p class="m-0" >Don't have an account? <a href="">Create One</a></p>
+
         </div>
-        
+
     </div>
 </div>
 
