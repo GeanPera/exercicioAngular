@@ -1,5 +1,5 @@
 export interface Usuario {
-      userId: string,
-      password: string,
-      tipo: string
-}
+      userId: "XPTO-01", 
+      password: "Trocar@123", 
+      tipo: "dev"   
+  }
