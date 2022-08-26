@@ -11,7 +11,7 @@ export class UsuarioService {
 
   constructor(private http: HttpClient) { }
 
-  getUsuario(cep: string): Observable<Usuario[]>{
+  getUsuario(): Observable<Usuario[]>{
     return this.http.get<Usuario[]>("http://localhost:3000/usuarios")
   }
 

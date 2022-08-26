@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Usuario } from "../interfaces/usuario/usuario";
-
+import { UsuarioService } from "../services/usuario.service"
 @Component({
   selector: 'app-app-autenticacao',
   templateUrl: './app-autenticacao.component.html',
   styleUrls: ['./app-autenticacao.component.css']
 })
-export class AppAutenticacaoComponent{
-
+export class AppAutenticacaoComponent implements OnInit{
+  
   usuario: Usuario = {
     userId: "",
     password: "",
@@ -18,13 +18,23 @@ export class AppAutenticacaoComponent{
     'color' : ""
   }
   msn?:string = "";
-  user: string = "XPTO-21";
-  senha: string = "Trocar@123";
+  user: string = "";
+  senha: string = "";
   contador:number = 0;
   spinner: boolean = false;
+
+  constructor(private usuarioService: UsuarioService) {}
+
+  ngOnInit(){
+    this.getUsuario()
+  }
+  getUsuario(){
+    this.usuarioService.getUsuario().subscribe(usuario => [this.usuario] = usuario); 
+    
+  }
   
   login():void {
-
+    
     this.spinner = true;
     
     setTimeout(() => {
@@ -33,7 +43,7 @@ export class AppAutenticacaoComponent{
 
     }, 1000);
 
-    if (this.contador >= 3){
+    if (this.contador >= 2){
 
       this.classe.color = "text-danger";
       this.msn = "Usuário Bloqueado!";
