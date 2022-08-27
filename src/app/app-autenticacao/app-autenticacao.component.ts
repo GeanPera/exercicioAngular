@@ -7,7 +7,7 @@ import { UsuarioService } from "../services/usuario.service"
   templateUrl: './app-autenticacao.component.html',
   styleUrls: ['./app-autenticacao.component.css']
 })
-export class AppAutenticacaoComponent implements OnInit{
+export class AppAutenticacaoComponent{
   
   usuario: Usuario = {
     userId: "",
@@ -25,15 +25,16 @@ export class AppAutenticacaoComponent implements OnInit{
 
   constructor(private usuarioService: UsuarioService) {}
 
-  ngOnInit(){
-    this.getUsuario()
-  }
   getUsuario(){
-    this.usuarioService.getUsuario().subscribe(usuario => [this.usuario] = usuario); 
+    this.usuarioService.getUsuario().subscribe(usuario => {
+      [this.usuario] = usuario;
+      console.log(this.usuario);
+      this.login()
+    }); 
     
   }
   
-  login():void {
+  login() {
     
     this.spinner = true;
     
