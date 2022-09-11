@@ -13,5 +13,17 @@ export class AppComponent {
     this.textoSalvo = campoInput
 
   }
+  readLocalStorageToken(){
+    if (localStorage['token'] === "ptoh26410x5=50x") {
+      return true
+    } else {
+      return false
+    }
+  }
+  deslogar(){
+    localStorage['token'] = "deslogado";
+    console.log("deslogado")
+    
+  }
 }
 

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { Usuario } from "../interfaces/usuario/usuario";
 import { UsuarioService } from "../services/usuario.service"
@@ -7,7 +8,7 @@ import { UsuarioService } from "../services/usuario.service"
   templateUrl: './app-autenticacao.component.html',
   styleUrls: ['./app-autenticacao.component.css']
 })
-export class AppAutenticacaoComponent{
+export class AppAutenticacaoComponent {
   
   usuario: Usuario = {
     userId: "",
@@ -23,7 +24,8 @@ export class AppAutenticacaoComponent{
   contador:number = 0;
   spinner: boolean = false;
 
-  constructor(private usuarioService: UsuarioService) {}
+  constructor(private usuarioService: UsuarioService, private router: Router) {}
+  
 
   getUsuario(){
     this.usuarioService.getUsuario().subscribe(usuario => {
@@ -44,7 +46,7 @@ export class AppAutenticacaoComponent{
 
     }, 1000);
 
-    if (this.contador >= 2){
+    if (this.contador >= 3){
 
       this.classe.color = "text-danger";
       this.msn = "Usuário Bloqueado!";
@@ -66,6 +68,11 @@ export class AppAutenticacaoComponent{
       this.msn = "Logado!";
       this.contador = 0;
 
+      setTimeout(() => {
+        localStorage['token'] = 'ptoh26410x5=50x';
+        this.router.navigate(['']);
+      }, 2000);
+      
     }
   }
 }
