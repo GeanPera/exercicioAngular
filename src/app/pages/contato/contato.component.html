@@ -1,3 +1,78 @@
-<h1>contato works!</h1>
+<form [formGroup]="formulario" class="card largura">
+    <div class="card-header">
+        <h5 class="mt-2">Formulário</h5>
+    </div>
+    <div class="card-body">
+        <!-- Campo nome -->
+        <div>
+            <label class="form-label m-2" for="idNome" class="d-block">Nome</label>
+            <input class="form-control" type="text" id="idNome" formControlName="nome">
+        </div>
+        <!-- Validação campo nome -->
+        <div *ngIf="formulario.get('nome')?.errors?.['required'] && formulario.get('nome')?.touched">
+            <p class="text-danger">Nome obrigatório</p>
+        </div>
+        <div *ngIf="formulario.get('nome')?.errors?.['pattern'] && formulario.get('nome')?.touched">
+            <p class="text-danger">Digite somente letras maiusculas</p>
+        </div>
+        <!-- Campo telefone -->
+        <div>
+            <label class="form-label m-2" for="idTelefone" class="d-block">Telefone</label>
+            <input class="form-control" type="number" id="idTelefone" formControlName="telefone">
+        </div>
+        <!-- Campo email -->
+        <div>
+            <label class="form-label m-2" for="idEmail" class="d-block">E-mail</label>
+            <input class="form-control" type="text" id="idEmail" formControlName="email">
+        </div>
+        <!-- Validação campo email -->
+        <div *ngIf="formulario.get('email')?.errors?.['required'] && formulario.get('email')?.touched">
+            <p class="text-danger">Email obrigatório</p>
+        </div>
+        <div *ngIf="formulario.get('email')?.errors?.['email'] && formulario.get('email')?.touched">
+            <p class="text-danger">Formato de email obrigatório</p>
+        </div>
+        <!-- Campo cep -->
+        <div>
+            <label class="form-label m-2" for="idCep" class="d-block">CEP</label>
+            <input class="form-control" type="number" id="idCep" formControlName="cep">
+        </div>
+        <!-- Validação campo cep -->
+        <div *ngIf="formulario.get('cep')?.errors?.['pattern'] && formulario.get('cep')?.touched">
+            <p class="text-danger">Tamanho 8 caracteres</p>    
+        </div>
+        <!-- Campo assunto -->
+        <div>
+            <label class="form-label m-2" for="idAssunto" class="d-block">Assunto</label>
+            <textarea class="form-control" id="idAssunto" formControlName="assunto"></textarea>
+        </div>
+        <!-- Validação campo assunto -->
+        <div *ngIf="formulario.get('assunto')?.errors?.['required'] && formulario.get('assunto')?.touched">
+            <p class="text-danger">Assunto obrigatório</p>
+        </div>
+        <div *ngIf="formulario.get('assunto')?.errors?.['maxlength'] && formulario.get('assunto')?.touched">
+            <p class="text-danger">Tamanho maximo 50 caracteres</p>
+        </div>
+        <!-- Campo menssagem -->
+        <div>
+            <label class="form-label m-2" for="idMenssagem" class="d-block">Menssagem</label>
+            <textarea class="form-control" id="idMenssagem" formControlName="menssagem"></textarea>
+        </div>
+        <!-- Validação campo menssagem -->
+        <div *ngIf="formulario.get('menssagem')?.errors?.['required'] && formulario.get('menssagem')?.touched">
+            <p class="text-danger">Menssagem obrigatório</p>
+        </div>
+        <div *ngIf="formulario.get('menssagem')?.errors?.['maxlength'] && formulario.get('menssagem')?.touched">
+            <p class="text-danger">Tamanho maximo 500 caracteres</p>
+        </div> 
+    </div>
+    <!-- Btn submit -->
+    <div class="card-footer">
+        <button class="btn" (click)="cadastrar()" [disabled]="!formulario.valid">Submit</button> 
+    </div>
+
+
+    
+</form>
 
 
