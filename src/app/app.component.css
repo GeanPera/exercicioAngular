@@ -1,12 +1,6 @@
-.clDiv{
-    text-align: center;
-    margin-top: 10px;
-}
-.clBt{
-    margin-left: 5px;
-   margin-right: 5px;
-}
-.listas{
-    width: 100vw;
-    height: 100vh;
+.margeMain{
+    margin-top: 70px;
+    margin-right: 20px;
+    margin-left: 20px;
+    margin-bottom: 80px;
 }
